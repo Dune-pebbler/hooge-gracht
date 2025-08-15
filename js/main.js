@@ -4,6 +4,8 @@ jQuery(document).ready(function () {
   initInView(); // Call our inView initialization function
   initHeroSliderTwoCols();
   initProjectsCarousel();
+  setOnTimelineSlider();
+  timelineOptions();
 });
 jQuery(window).scroll(function () {
   // hideOnScroll();
@@ -310,3 +312,57 @@ function initHeroSliderTwoCols() {
     }, 5000);
   }
 }
+function initBeforeAfterSlider() {
+  const slider = document.getElementById("beforeAfterSlider");
+  const handle = document.getElementById("sliderHandle");
+  if (!slider || !handle) return;
+
+  const beforeImage = slider.querySelector(".before-image");
+  let isDragging = false;
+
+  const updateSlider = (clientX) => {
+    const rect = slider.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+    handle.style.left = percentage + "%";
+    beforeImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+  };
+
+  handle.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    e.preventDefault();
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (isDragging) updateSlider(e.clientX);
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  handle.addEventListener("touchstart", (e) => {
+    isDragging = true;
+    e.preventDefault();
+  });
+
+  document.addEventListener("touchmove", (e) => {
+    if (isDragging && e.touches[0]) {
+      updateSlider(e.touches[0].clientX);
+    }
+  });
+
+  document.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+
+  slider.addEventListener("click", (e) => {
+    if (e.target === slider || e.target.tagName === "IMG") {
+      updateSlider(e.clientX);
+    }
+  });
+}
+
+// Initialize on DOM ready
+document.addEventListener("DOMContentLoaded", initBeforeAfterSlider);

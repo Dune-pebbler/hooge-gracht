@@ -1,0 +1,23 @@
+<?php
+$text_with_map__text_field = get_sub_field('text_with_map__text_field');
+$text_with_map__map_field = get_sub_field('text_with_map__map_field');
+?>
+<section class="text_with_map fade-in-on-scroll">
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-5">
+                <div class="text_with_map__text-container">
+                    <div class="text_with_map__text-content">
+                        <?= $text_with_map__text_field; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7 p-0">
+                <div class="text_with_map__image-container">
+                    <img src="<?= $text_with_map__map_field['url']; ?>" alt="<?= $text_with_map__map_field['alt']; ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

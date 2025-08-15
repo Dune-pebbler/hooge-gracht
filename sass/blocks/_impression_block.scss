@@ -1,0 +1,67 @@
+.impression_block {
+  background: $color2;
+  &__background-image-container {
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: white;
+      @media screen and (max-width: 576px) {
+        height: 313px;
+      }
+    }
+  }
+  .impression-banner {
+    position: relative;
+    &:before {
+      content: " ";
+      width: 100%;
+      height: 30%;
+      background-color: $white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      @media screen and (max-width: 576px) {
+        display: none;
+      }
+    }
+    .impression_block__text-container {
+      h2 {
+        color: $white;
+        font-weight: 200;
+      }
+    }
+    .impression_block__outside-image-container {
+      position: relative;
+      z-index: 2;
+
+      img {
+        width: 100%;
+        height: 413px;
+        object-fit: cover;
+        border-radius: 90px 0 0 0;
+        padding-right: 5px;
+        @media screen and (max-width: 576px) {
+          padding-right: 0px;
+          height: 313px;
+        }
+      }
+    }
+    .impression_block__inside-image-container {
+      position: relative;
+      z-index: 2;
+
+      img {
+        width: 100%;
+        height: 413px;
+        object-fit: cover;
+        border-radius: 0 90px 0 0;
+        @media screen and (max-width: 576px) {
+          height: 313px;
+        }
+      }
+    }
+  }
+}
