@@ -1,6 +1,10 @@
 .text_with_image {
   overflow: hidden;
   background: $color3;
+
+  @media screen and (max-width: 768px) {
+    padding-inline: 35px 0px;
+  }
   &__image-container {
     height: 100%;
     @media screen and (max-width: 768px) {

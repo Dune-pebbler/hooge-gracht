@@ -1,3 +1,6 @@
+<?php
+$logo = get_field('header_logo', 'option');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,52 +15,61 @@
 </head>
 
 <body <?php body_class() ?>>
-  <header>
-    <nav>
-      <div class="container">
-        <div class="row">
-          <div class="col-12 nav-container static">
 
-            <div class="logo">
-              <a href="/" title="Home">
-                <?php $header_logo = get_field('header_logo', 'option'); ?>
-                <?php if ($header_logo): ?>
-                  <img src="<?= $header_logo['url']; ?>" alt="">
-                <?php endif; ?>
-              </a>
-            </div>
+  <div class="nav-logo">
+    <a href="/home">
+      <div class="nav-logo__container">
+        <img src="<?= $logo['url'] ?>" alt="<?= $logo['alt'] ?>">
+      </div>
+    </a>
+  </div>
+  <!-- Fixed Bottom-Right Navigation -->
+  <nav class="bottom-nav">
 
-            <!-- menu items (mobile and desktop)-->
-            <div id="nav-items">
-              <div id="cross">
-                <div class="cross-line-1"></div>
-                <div class="cross-line-2"></div>
-              </div>
-              <?php
-              wp_nav_menu([
-                'theme_location' => 'primary',
-                'menu_class' => 'primary-nav',
-              ]);
-              ?>
-              <!-- search -->
-              <!-- <div class="search">
-                <form role="search" method="get" class="searchform" action="/">
-                  <input type="text" placeholder="Zoek uw product.." name="s" id="s">
-                  <button type="submit" class="search-btn"><i class="far fa-search"></i></button>
-                </form>
-              </div> -->
-            </div>
-            <!-- end menu items -->
+    <div class="nav-container">
 
-            <div class="hamburger">
-              <div class="hamburger-line"></div>
-              <div class="hamburger-line"></div>
-              <div class="hamburger-line"></div>
-            </div>
+      <!-- Hamburger Menu Button -->
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+
+      <!-- Menu Items (hidden by default on mobile) -->
+      <div id="nav-items">
+        <div class="nav-logo-mobile">
+          <div class="nav-logo-mobile__container">
+            <a href="/home">
+              <img src="<?= $logo['url'] ?>" alt="<?= $logo['alt'] ?>">
+            </a>
           </div>
         </div>
+        <div id="cross">
+          <div class="cross-line-1"></div>
+          <div class="cross-line-2"></div>
+        </div>
+
+        <?php
+        wp_nav_menu([
+          'theme_location' => 'primary',
+          'menu_class' => 'primary-nav',
+          'container_class' => 'menu-primary-container',
+        ]);
+        ?>
       </div>
-      </div>
-    </nav>
-  </header>
+  </nav>
+
   <main>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const navLogo = document.querySelector('.nav-logo');
+
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 50) { // adjust "50" to when you want the effect to trigger
+            navLogo.classList.add('scrolled');
+          } else {
+            navLogo.classList.remove('scrolled');
+          }
+        });
+      });
+    </script>

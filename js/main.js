@@ -1,23 +1,51 @@
-jQuery(document).ready(function () {
-  // startOwlSlider();
+/**
+ * Main JavaScript file for the website.
+ * This file handles event listeners, initializes plugins like Owl Carousel,
+ * and manages custom UI interactions.
+ */
+
+// Use jQuery's ready function as the main entry point for the script.
+// The dollar sign `$` is passed as an argument to avoid conflicts with other libraries.
+jQuery(function ($) {
+  // --- INITIALIZATION CALLS ---
+  // All functions that need to run after the DOM is loaded should be called here.
+
   setHamburgerActiveToggle();
-  initInView(); // Call our inView initialization function
+  initInView();
   initHeroSliderTwoCols();
   initProjectsCarousel();
-  setOnTimelineSlider();
-  timelineOptions();
-});
-jQuery(window).scroll(function () {
-  // hideOnScroll();
-});
-jQuery(window).resize(function () {});
+  initBeforeAfterSlider();
+  startOwlSlider(); // General Owl Carousel initializer
+  initializeTimelineSlider(".timeline-slider"); // Specific timeline slider initializer
 
+  // --- AJAX RELATED INITIALIZERS ---
+  postcodeAutofill();
+  setOnBtnAjaxFilter();
+
+  // --- EVENT LISTENERS ---
+  $(window).on("scroll", function () {
+    // The hideOnScroll function is commented out as it seems incomplete.
+    // hideOnScroll();
+  });
+
+  $(window).on("resize", function () {
+    // Placeholder for any functions that need to run on window resize.
+  });
+});
+
+// --- FUNCTION DEFINITIONS ---
+
+/**
+ * Toggles the active state for the hamburger menu and navigation.
+ * Also prevents the body from scrolling when the menu is open.
+ */
 function setHamburgerActiveToggle() {
   jQuery(".hamburger").on("click", function () {
     jQuery(".hamburger").addClass("is-active");
     jQuery("#nav-items").addClass("is-active");
     jQuery("body, html").addClass("stop-scrolling");
   });
+
   jQuery("#cross").on("click", function () {
     jQuery(".hamburger").removeClass("is-active");
     jQuery("#nav-items").removeClass("is-active");
@@ -25,8 +53,14 @@ function setHamburgerActiveToggle() {
   });
 }
 
+/**
+ * Hides the main header on scroll down.
+ * NOTE: This function is incomplete. The variables `togglePosition` and `mainHeader`
+ * need to be defined in the global scope for this to work.
+ */
+// let togglePosition = 0;
+// const mainHeader = jQuery('header'); // Example definition
 function hideOnScroll() {
-  //needs work
   var currentScrollTop = jQuery(window).scrollTop();
   if (togglePosition < currentScrollTop && togglePosition > 180 && !isMobile) {
     mainHeader.addClass("hide");
@@ -36,8 +70,15 @@ function hideOnScroll() {
   togglePosition = currentScrollTop;
 }
 
+/**
+ * Initializes a generic Owl Carousel slider.
+ */
 function startOwlSlider() {
-  jQuery(".owl-carousel").owlCarousel({
+  // This targets all elements with .owl-carousel. To avoid conflict, ensure
+  // more specific initializers (like timeline) run AFTER this or use more specific selectors.
+  jQuery(
+    ".owl-carousel:not(.timeline-slider):not(.projects-carousel):not(.hero-slider_two_cols .owl-carousel)"
+  ).owlCarousel({
     dots: false,
     nav: true,
     margin: 12,
@@ -59,6 +100,10 @@ function startOwlSlider() {
     },
   });
 }
+
+/**
+ * Initializes the projects carousel with specific settings.
+ */
 function initProjectsCarousel() {
   jQuery(".projects-carousel").owlCarousel({
     items: 1,
@@ -69,70 +114,51 @@ function initProjectsCarousel() {
     autoplayTimeout: 5000,
     autoplayHoverPause: true,
     navText: [
-      // Previous
-      `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 70 70">
-  <g id="Group_82" data-name="Group 82" transform="translate(-1620 -2559)">
-    <circle id="Ellipse_1" data-name="Ellipse 1" cx="35" cy="35" r="35" transform="translate(1620 2559)" fill="#f58220"/>
-    <path id="Path_130" data-name="Path 130" d="M1143.152,3142.543l16.47,16.47-16.47,16.47" transform="translate(2806.387 5753.013) rotate(180)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="6"/>
-  </g>
-</svg>`,
-      // Next
-      `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 70 70">
-  <g id="Group_83" data-name="Group 83" transform="translate(-1707 -2559)">
-    <circle id="Ellipse_2" data-name="Ellipse 2" cx="35" cy="35" r="35" transform="translate(1777 2629) rotate(180)" fill="#f58220"/>
-    <path id="Path_131" data-name="Path 131" d="M1143.152,3142.543l16.47,16.47-16.47,16.47" transform="translate(590.613 -565.013)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="6"/>
-  </g>
-</svg>
-`,
+      // Previous Arrow SVG
+      `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 70 70"><g id="Group_82" data-name="Group 82" transform="translate(-1620 -2559)"><circle id="Ellipse_1" data-name="Ellipse 1" cx="35" cy="35" r="35" transform="translate(1620 2559)" fill="#f58220"/><path id="Path_130" data-name="Path 130" d="M1143.152,3142.543l16.47,16.47-16.47,16.47" transform="translate(2806.387 5753.013) rotate(180)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="6"/></g></svg>`,
+      // Next Arrow SVG
+      `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 70 70"><g id="Group_83" data-name="Group 83" transform="translate(-1707 -2559)"><circle id="Ellipse_2" data-name="Ellipse 2" cx="35" cy="35" r="35" transform="translate(1777 2629) rotate(180)" fill="#f58220"/><path id="Path_131" data-name="Path 131" d="M1143.152,3142.543l16.47,16.47-16.47,16.47" transform="translate(590.613 -565.013)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="6"/></g></svg>`,
     ],
   });
 }
 
-// AJAX FILTERS
+/**
+ * Sets up an AJAX call to an API for postcode autofill functionality.
+ */
 function postcodeAutofill() {
-  console.log("main.js loaded");
   jQuery("#input_3_7").on("change", function () {
-    console.log("input jquery hi!");
-
-    // Get the value from the input field
     var postcodeValue = jQuery("#input_3_3").val();
     var houseNumberValue = jQuery(this).val();
 
     jQuery.ajax({
-      // Use the input value in the URL
-      url:
-        "https://postcode.tech/api/v1/postcode?postcode=" +
-        encodeURIComponent(postcodeValue) +
-        "&number=" +
-        encodeURIComponent(houseNumberValue),
+      url: `https://postcode.tech/api/v1/postcode?postcode=${encodeURIComponent(
+        postcodeValue
+      )}&number=${encodeURIComponent(houseNumberValue)}`,
       headers: {
         Authorization: "Bearer 28d9bd81-3f4d-4cec-a05d-4ec732e9f578",
       },
       method: "GET",
-
       success: function (data) {
         jQuery("#input_3_5").val(data.city);
-        // Handle the successful response
-        console.log(data);
-        // Populate Gravity Forms fields with the received data
-        // populateGravityFormsFields(data);
+        console.log("Postcode data fetched successfully:", data);
       },
       error: function (error) {
-        // Handle errors
-        console.error("Error fetching KVK data:", error);
+        console.error("Error fetching postcode data:", error);
       },
     });
   });
 }
 
+/**
+ * Sets up AJAX filtering for projects based on form input changes.
+ */
 function setOnBtnAjaxFilter() {
   jQuery(".filter-change").on("change", function () {
     jQuery("#all-projects").addClass("fade-out");
     jQuery("#loader").show();
 
     jQuery.ajax({
-      //object from functions.php
-      url: ajax_object.ajax_url,
+      url: ajax_object.ajax_url, // Passed from WordPress (functions.php)
       type: "POST",
       data: {
         action: "filter_projects",
@@ -153,125 +179,90 @@ function setOnBtnAjaxFilter() {
         },
       },
       success: function (response) {
-        var responseData = JSON.parse(response);
-        var htmlContent = responseData.html;
-        var postCount = responseData.postCount;
+        try {
+          var responseData = JSON.parse(response);
+          var htmlContent = responseData.html;
+          var postCount = responseData.postCount;
 
+          jQuery("#loader").hide();
+          jQuery("#all-projects").html(htmlContent).removeClass("fade-out");
+          jQuery("#filter-results").text(postCount);
+        } catch (e) {
+          console.error("Error parsing filter response:", e);
+          jQuery("#loader").hide();
+        }
+      },
+      error: function (error) {
+        console.error("Error with AJAX filter request:", error);
         jQuery("#loader").hide();
-        jQuery("#all-projects").html(htmlContent);
-        jQuery("#all-projects").css("opcacity", 1);
-        jQuery("#all-projects").removeClass("fade-out");
-        jQuery("#filter-results").text(postCount);
       },
     });
   });
 }
 
-// Website maintenance closure functionality
+/**
+ * Immediately-invoked function expression (IIFE) for website maintenance closure.
+ * Redirects users if the site is within a specified maintenance window.
+ */
 (function () {
-  var startDate = new Date("2024-11-22T13:47:00"); // Start date of closure
-  var endDate = new Date("2024-11-22T13:56:00"); // End date of closure
+  var startDate = new Date("2024-11-22T13:47:00");
+  var endDate = new Date("2024-11-22T13:56:00");
   var currentDate = new Date();
-
-  // Get the current URL
   var currentUrl = window.location.href;
 
-  // Check if the current date is within the closed period
   if (currentDate >= startDate && currentDate <= endDate) {
-    // Check if the current URL is the specific page (home page)
     if (currentUrl === "https://template-tim.dune-pebbler.nl/") {
-      // Redirect to a maintenance page
       window.location.href =
-        "https://template-tim.dune-pebbler.nl/niet-beschikbaar/"; // Maintenance page URL
+        "https://template-tim.dune-pebbler.nl/niet-beschikbaar/";
     }
   }
 })();
 
-// Initialize inView functionality
+/**
+ * Initializes the inView.js library to trigger animations on scroll.
+ */
 function initInView() {
-  // Check if inView is available (library loaded)
-  if (typeof inView !== "undefined") {
-    // FADE IN FROM BOTTOM (original)
-    inView(".fade-in-on-scroll").on("enter", function (el) {
-      console.log("Fade in element entered view:", el);
-      el.classList.add("in-view");
-    });
+  if (typeof inView === "undefined") {
+    console.error("inView library not loaded");
+    return;
+  }
 
-    // SLIDE IN FROM LEFT
-    inView(".slide-left-on-scroll").on("enter", function (el) {
-      console.log("Slide left element entered view:", el);
-      el.classList.add("in-view");
-    });
+  const animationTargets = [
+    ".fade-in-on-scroll",
+    ".slide-left-on-scroll",
+    ".slide-right-on-scroll",
+    ".scale-up-on-scroll",
+    ".rotate-in-on-scroll",
+    ".bounce-in-on-scroll",
+    ".flip-in-on-scroll",
+    ".typewriter-on-scroll",
+    ".delayed-on-scroll",
+  ];
 
-    // SLIDE IN FROM RIGHT
-    inView(".slide-right-on-scroll").on("enter", function (el) {
-      console.log("Slide right element entered view:", el);
-      el.classList.add("in-view");
-    });
+  inView(animationTargets.join(","))
+    .on("enter", (el) => el.classList.add("in-view"))
+    .on("exit", (el) => el.classList.remove("in-view"));
 
-    // SCALE UP ANIMATION
-    inView(".scale-up-on-scroll").on("enter", function (el) {
-      console.log("Scale up element entered view:", el);
-      el.classList.add("in-view");
-    });
-
-    // ROTATE IN ANIMATION
-    inView(".rotate-in-on-scroll").on("enter", function (el) {
-      console.log("Rotate in element entered view:", el);
-      el.classList.add("in-view");
-    });
-
-    // STAGGER ANIMATION (for multiple elements)
-    inView(".stagger-on-scroll").on("enter", function (el) {
-      console.log("Stagger element entered view:", el);
-
-      // Find all child elements to stagger
-      var children = el.querySelectorAll(".stagger-item");
-      children.forEach(function (child, index) {
-        setTimeout(function () {
-          child.classList.add("in-view");
-        }, index * 100); // 100ms delay between each item
+  // Special handler for staggered animations
+  inView(".stagger-on-scroll")
+    .on("enter", function (el) {
+      el.querySelectorAll(".stagger-item").forEach((child, index) => {
+        setTimeout(() => child.classList.add("in-view"), index * 100);
+      });
+    })
+    .on("exit", function (el) {
+      el.querySelectorAll(".stagger-item").forEach((child) => {
+        child.classList.remove("in-view");
       });
     });
-
-    // BOUNCE IN ANIMATION
-    inView(".bounce-in-on-scroll").on("enter", function (el) {
-      console.log("Bounce in element entered view:", el);
-      el.classList.add("in-view");
-    });
-
-    // FLIP IN ANIMATION
-    inView(".flip-in-on-scroll").on("enter", function (el) {
-      console.log("Flip in element entered view:", el);
-      el.classList.add("in-view");
-    });
-
-    // TYPEWRITER EFFECT
-    inView(".typewriter-on-scroll").on("enter", function (el) {
-      console.log("Typewriter element entered view:", el);
-      el.classList.add("in-view");
-    });
-
-    // DELAYED ANIMATION (appears after a delay)
-    inView(".delayed-on-scroll").on("enter", function (el) {
-      console.log("Delayed element entered view:", el);
-      setTimeout(function () {
-        el.classList.add("in-view");
-      }, 500); // 500ms delay
-    });
-
-    console.log("All inView listeners set up successfully");
-  } else {
-    console.error("inView library not loaded");
-    fallbackScrollAnimation();
-  }
 }
+
+/**
+ * Initializes the two-column hero slider.
+ */
 function initHeroSliderTwoCols() {
   const $carousel = jQuery(".hero-slider_two_cols .owl-carousel");
-  const isMobile = window.innerWidth < 768;
-  let direction = "next";
-
-  if ($carousel.length === 0) return; // Safety check
+  if (!$carousel.length) return;
 
   $carousel.owlCarousel({
     items: 2,
@@ -290,28 +281,25 @@ function initHeroSliderTwoCols() {
     },
   });
 
-  if (isMobile) {
+  // Custom autoplay logic for mobile only
+  if (window.innerWidth < 768) {
+    let direction = "next";
     setInterval(function () {
-      const $activeItems = $carousel.find(".owl-item.active");
-      const current = $activeItems.first().index();
-      const total = $carousel.find(".owl-item").length;
+      const total = $carousel.find(".owl-item:not(.cloned)").length;
+      const current = $carousel.find(".owl-item.active").index();
 
-      // Decide direction
-      if (current === 0) {
-        direction = "next";
-      } else if (current === total - 1) {
-        direction = "prev";
-      }
+      if (current === 0) direction = "next";
+      // The last item index is total - 1
+      if (current === total - 1) direction = "prev";
 
-      // Trigger next or prev
-      if (direction === "next") {
-        $carousel.trigger("next.owl.carousel");
-      } else {
-        $carousel.trigger("prev.owl.carousel");
-      }
+      $carousel.trigger(`${direction}.owl.carousel`);
     }, 5000);
   }
 }
+
+/**
+ * Initializes a pure JavaScript before-and-after image comparison slider.
+ */
 function initBeforeAfterSlider() {
   const slider = document.getElementById("beforeAfterSlider");
   const handle = document.getElementById("sliderHandle");
@@ -364,5 +352,49 @@ function initBeforeAfterSlider() {
   });
 }
 
-// Initialize on DOM ready
-document.addEventListener("DOMContentLoaded", initBeforeAfterSlider);
+/**
+ * Initializes an Owl Carousel timeline slider with responsive settings.
+ * @param {string} selector - The CSS selector for the timeline slider element.
+ */
+function initializeTimelineSlider(selector) {
+  const slider = jQuery(selector);
+  if (!slider.length) {
+    console.warn(`Timeline slider with selector "${selector}" not found.`);
+    return;
+  }
+
+  function getTimelineOptions(amount) {
+    const navItems = slider.find(".timeline-slide").length;
+    const isNavNeeded = navItems > amount;
+    return {
+      items: amount,
+      nav: isNavNeeded,
+      mouseDrag: isNavNeeded,
+      touchDrag: isNavNeeded,
+      pullDrag: isNavNeeded,
+      freeDrag: isNavNeeded,
+    };
+  }
+
+  const carouselOptions = {
+    ...getTimelineOptions(2),
+    dots: false,
+    margin: 25,
+    navText: [
+      '<i class="fal fa-arrow-left"></i>',
+      '<i class="fal fa-arrow-right"></i>',
+    ],
+    responsive: {
+      768: { ...getTimelineOptions(4) },
+      1199: { ...getTimelineOptions(5) },
+      1360: { margin: 100, ...getTimelineOptions(6) },
+      1500: { margin: 50, ...getTimelineOptions(8) },
+    },
+  };
+
+  slider.on("initialized.owl.carousel", function () {
+    jQuery(this).find(".owl-item").last().addClass("last");
+  });
+
+  slider.owlCarousel(carouselOptions);
+}

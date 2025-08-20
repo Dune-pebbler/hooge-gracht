@@ -4,7 +4,7 @@ $image_block = get_sub_field('image_block');
 $reverse_layout = get_sub_field('reverse_layout');
 $button_link = get_sub_field('button_link');
 ?>
-<section class="text_with_image">
+<section class="text_with_image" id="project">
     <div class="container">
         <div class="row justify-content-center<?= $reverse_layout ? ' reverse' : '' ?>">
 

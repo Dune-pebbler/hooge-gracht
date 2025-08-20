@@ -2,7 +2,7 @@
 $text_with_map__text_field = get_sub_field('text_with_map__text_field');
 $text_with_map__map_field = get_sub_field('text_with_map__map_field');
 ?>
-<section class="text_with_map fade-in-on-scroll">
+<section class="text_with_map fade-in-on-scroll" id="locatie">
     <div class="container-fluid">
 
         <div class="row justify-content-center">

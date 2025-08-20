@@ -576,6 +576,37 @@
                     "sub_fields": [],
                     "min": "",
                     "max": ""
+                },
+                "layout_68a2f235bdf60": {
+                    "key": "layout_68a2f235bdf60",
+                    "name": "interest_form",
+                    "label": "Interesse formulier",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_68a2f24dbdf62",
+                            "label": "Formulier beschrijving",
+                            "name": "form_description",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -601,5 +632,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755267758
+    "modified": 1755509477
 }

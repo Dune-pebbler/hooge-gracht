@@ -1,5 +1,11 @@
-<section class="timeline">
+<?php
+$timeline_title = get_field('timeline_title', 'option');
+?>
+<section class="timeline" id="planning">
     <div class="container">
+        <div class="timeline__title-container">
+            <h2><?= $timeline_title; ?></h2>
+        </div>
         <div class="timeline-slider owl-carousel owl-theme">
             <?php if (have_rows('tijdlijn', 'option')): ?>
                 <?php while (have_rows('tijdlijn', 'option')):
@@ -30,58 +36,3 @@
         </div>
     </div>
 </section>
-
-<script>
-    jQuery(document).ready(function ($) {
-
-        function timelineOptions(amount) {
-            let navItems = $(".timeline-slider").find(".timeline-slide").length;
-
-            return {
-                items: amount,
-                nav: navItems > amount,
-                mouseDrag: navItems > amount,
-                touchDrag: navItems > amount,
-                pullDrag: navItems > amount,
-                freeDrag: navItems > amount,
-            };
-        }
-
-        function setOnTimelineSlider() {
-            let carouselOptions = {
-                ...timelineOptions(2),
-                dots: false,
-                margin: 25,
-                navText: [
-                    '<i class="fal fa-arrow-left"></i>',
-                    '<i class="fal fa-arrow-right"></i>',
-                ],
-                responsive: {
-                    768: {
-                        ...timelineOptions(4),
-                    },
-                    1199: {
-                        ...timelineOptions(5),
-                    },
-                    1360: {
-                        margin: 100,
-                        ...timelineOptions(6),
-                    },
-                    1500: {
-                        margin: 50,
-                        ...timelineOptions(8),
-                    },
-                },
-            };
-
-            $(".timeline-slider").on("initialized.owl.carousel", function () {
-                $(this).find(".owl-item").last().addClass("last");
-            });
-
-            $(".timeline-slider").owlCarousel(carouselOptions);
-        }
-
-        setOnTimelineSlider();
-
-    });
-</script>

@@ -2,7 +2,7 @@
 $text_block = get_sub_field('text_block');
 ?>
 <section class="text_slider">
-    <div class="container-fluid">
+    <div class="container-fluid fade-in-on-scroll">
         <div class="row">
             <div class="col-12 col-lg-8 p-0">
                 <div class="text_slider__image-container ">

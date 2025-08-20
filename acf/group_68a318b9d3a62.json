@@ -1,32 +1,11 @@
 {
-    "key": "group_63764f6e8ad4c",
-    "title": "Tijdlijn",
+    "key": "group_68a318b9d3a62",
+    "title": "Footer info",
     "fields": [
         {
-            "key": "field_68a595e5104ce",
-            "label": "Tijdlijn titel",
-            "name": "timeline_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_63764f7604141",
-            "label": "Tijdlijn",
-            "name": "tijdlijn",
+            "key": "field_68a318b997b5d",
+            "label": "footer info herhaler",
+            "name": "footer_info_repeater",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -37,17 +16,18 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
+            "layout": "table",
+            "pagination": 0,
             "min": 0,
             "max": 0,
-            "layout": "block",
+            "collapsed": "",
             "button_label": "Nieuwe rij",
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_63764f8004142",
-                    "label": "Wanneer?",
-                    "name": "when",
+                    "key": "field_68a31a5c97b5e",
+                    "label": "Bedrijf titel",
+                    "name": "company_role",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -59,16 +39,17 @@
                         "id": ""
                     },
                     "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
-                    "parent_repeater": "field_63764f7604141"
+                    "parent_repeater": "field_68a318b997b5d"
                 },
                 {
-                    "key": "field_63764f8d04143",
-                    "label": "Afbeelding",
-                    "name": "afbeelding",
+                    "key": "field_68a31a7697b5f",
+                    "label": "Bedrijf logo",
+                    "name": "company_logo",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -80,7 +61,6 @@
                         "id": ""
                     },
                     "return_format": "array",
-                    "preview_size": "medium",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -89,12 +69,14 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "parent_repeater": "field_63764f7604141"
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_68a318b997b5d"
                 },
                 {
-                    "key": "field_63764f9b04144",
-                    "label": "Titel",
-                    "name": "titel",
+                    "key": "field_68a31a9697b60",
+                    "label": "Bedrijf adres",
+                    "name": "company_adres",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -106,16 +88,17 @@
                         "id": ""
                     },
                     "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
-                    "parent_repeater": "field_63764f7604141"
+                    "parent_repeater": "field_68a318b997b5d"
                 },
                 {
-                    "key": "field_63764f9f04145",
-                    "label": "Subtitel",
-                    "name": "subtitel",
+                    "key": "field_68a31aad97b61",
+                    "label": "Bedrijf email",
+                    "name": "company_email",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -127,18 +110,19 @@
                         "id": ""
                     },
                     "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
-                    "parent_repeater": "field_63764f7604141"
+                    "parent_repeater": "field_68a318b997b5d"
                 },
                 {
-                    "key": "field_6377b6f6e5ac2",
-                    "label": "Is uitgeschakeld?",
-                    "name": "is_disabled",
+                    "key": "field_68a31ac897b62",
+                    "label": "Bedrijf telefoonnummer",
+                    "name": "company_phone",
                     "aria-label": "",
-                    "type": "true_false",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -147,12 +131,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
-                    "parent_repeater": "field_63764f7604141"
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_68a318b997b5d"
                 }
             ]
         }
@@ -175,5 +160,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755682296
+    "modified": 1755519716
 }

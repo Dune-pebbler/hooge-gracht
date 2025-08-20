@@ -1,5 +1,5 @@
-<section class="news">
-    <div class="container">
+<section class="news" id="nieuws">
+    <div class="container fade-in-on-scroll">
         <div class="row">
             <div class="news-carousel owl-carousel">
 
@@ -18,31 +18,33 @@
                         ];
                         ?>
 
-                        <div class="news-item">
-                            <?php if (has_post_thumbnail()): ?>
-                                <div class="news-thumb">
-                                    <?php the_post_thumbnail('full'); ?>
-                                </div>
-                            <?php endif; ?>
+                        <a href="<?= $button_link['url']; ?>" class="news-item-link">
+                            <div class="news-item">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <div class="news-thumb">
+                                        <?php the_post_thumbnail('full'); ?>
+                                    </div>
+                                <?php endif; ?>
 
-                            <div class="news-content">
-                                <h2><?php the_title(); ?></h2>
-                                <span class="news-date"><?php echo get_the_date('d/m/Y'); ?></span>
-                                <div class="news-excerpt"><?php the_excerpt(); ?></div>
-                                <div class="news_button">
-
-                                    <a href="<?= $button_link['url']; ?>">
-                                        <?= $button_link['title']; ?>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14.728"
-                                            viewBox="0 0 24 14.728">
-                                            <path id="Arrow_1_Stroke_" data-name="Arrow 1 (Stroke)"
-                                                d="M17.343.293l6.364,6.364a1,1,0,0,1,0,1.414l-6.364,6.364a1,1,0,1,1-1.414-1.414l4.657-4.657H0v-2H20.586L15.929,1.707A1,1,0,1,1,17.343.293Z"
-                                                fill="#dee1e6" fill-rule="evenodd" />
-                                        </svg>
-                                    </a>
+                                <div class="news-content">
+                                    <h2><?php the_title(); ?></h2>
+                                    <div class="news-content-container">
+                                        <span class="news-date"><?php echo get_the_date('d/m/Y'); ?></span>
+                                        <div class="news-excerpt"><?php the_excerpt(); ?></div>
+                                    </div>
+                                    <div class="news_button">
+                                        <span><?= $button_link['title']; ?>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14.728"
+                                                viewBox="0 0 24 14.728">
+                                                <path id="Arrow_1_Stroke_" data-name="Arrow 1 (Stroke)"
+                                                    d="M17.343.293l6.364,6.364a1,1,0,0,1,0,1.414l-6.364,6.364a1,1,0,1,1-1.414-1.414l4.657-4.657H0v-2H20.586L15.929,1.707A1,1,0,1,1,17.343.293Z"
+                                                    fill="#dee1e6" fill-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
 
                     <?php endwhile;
                     wp_reset_postdata();
@@ -52,6 +54,11 @@
                 ?>
 
             </div>
+        </div>
+        <div class="news-archive-button-container">
+            <a href="<?php echo get_post_type_archive_link('nieuws'); ?>" class="btn-archive">
+                Nieuws overzicht
+            </a>
         </div>
     </div>
 </section>

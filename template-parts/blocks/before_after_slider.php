@@ -1,6 +1,8 @@
 <?php
 $before_img = get_sub_field('before_img');
 $after_img = get_sub_field('after_img');
+$onoff = get_field('onoff', 'option');
+$sales_text = get_field('sales_text', 'option');
 ?>
 
 <section class="before_after">
@@ -8,13 +10,30 @@ $after_img = get_sub_field('after_img');
         <div class="row">
             <div class="col-12 p-0">
                 <div class="before-after-slider" id="beforeAfterSlider">
+
+                    <?php if ($onoff): ?>
+                        <!-- Diagonal Sales Banner -->
+                        <div class="sales-banner">
+                            <div class="banner-content">
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                                <span class="banner-text"><?= $sales_text; ?></span>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="after-image">
                         <img src="<?php echo $after_img['url']; ?>" alt="<?php echo $after_img['alt']; ?>">
-                        <div class="image-label">After</div>
                     </div>
                     <div class="before-image">
                         <img src="<?php echo $before_img['url']; ?>" alt="<?php echo $before_img['alt']; ?>">
-                        <div class="image-label">Before</div>
                     </div>
                     <div class="slider-handle" id="sliderHandle">
                         <div class="slider-line"></div>
