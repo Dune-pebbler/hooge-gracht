@@ -31,6 +31,9 @@ $sales_text = get_field('sales_text', 'option');
 
                     <div class="after-image">
                         <img src="<?php echo $after_img['url']; ?>" alt="<?php echo $after_img['alt']; ?>">
+                        <img class="after-image-logo"
+                            src="<?= get_template_directory_uri(); ?>/images/Ethereal Glow Beauty.svg"
+                            alt="Ethereal Glow Beauty Logo">
                     </div>
                     <div class="before-image">
                         <img src="<?php echo $before_img['url']; ?>" alt="<?php echo $before_img['alt']; ?>">

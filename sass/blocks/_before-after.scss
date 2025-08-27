@@ -103,7 +103,7 @@
     content: "";
     display: block;
     width: 102%;
-    height: 423px;
+    height: 223px;
     /* Optimized SVG with empty space removed */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 216 1919 208'%3E%3Cpath fill='%23D9D2BF' d='M1919.56,226.27c-73.24-10.6-384.65,36.36-890.71,118.1C521.18,426.37,2.53,318.37,2.53,318.37L1.53,424.37h1918.03v-198.1Z'/%3E%3C/svg%3E");
     background-size: cover;
@@ -144,11 +144,42 @@
     width: 100%;
     height: 100%;
 
-    img {
+    // This now targets ONLY the main background image, not the logo.
+    img:not(.after-image-logo) {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+  }
+
+  // Add these new styles for the SVG logo inside the .after-image div.
+  .after-image {
+    .after-image-logo {
+      position: absolute; // Positions the SVG on top of the container.
+      top: 50%; // Distance from the top. Adjust as needed.
+      left: 20%; // Distance from the left. Adjust as needed.
+      width: 350px; // Set a specific width for the logo.
+      height: auto; // Maintain the aspect ratio automatically.
+      z-index: 5; // Ensures it's above the background image.
+
+      @media screen and (max-width: 1440px) {
+        top: 53%;
+        left: 25%;
+      }
+      @media screen and (max-width: 1024px) {
+        top: 50%;
+        left: 10%;
+      }
+      @media screen and (max-width: 768px) {
+        top: 40%;
+        left: 10%;
+      }
+      @media screen and (max-width: 576px) {
+        top: 50%;
+        left: 5%;
+        width: 150px;
+      }
     }
   }
 
@@ -210,7 +241,7 @@
   }
 
   @media (max-width: 768px) {
-    height: 300px;
+    height: 500px;
 
     .slider-circle {
       width: 40px;

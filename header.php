@@ -40,7 +40,8 @@ $logo = get_field('header_logo', 'option');
         <div class="nav-logo-mobile">
           <div class="nav-logo-mobile__container">
             <a href="/home">
-              <img src="<?= $logo['url'] ?>" alt="<?= $logo['alt'] ?>">
+              <img src="<?= get_template_directory_uri(); ?>/images/Logo Wit.svg" alt="<?= esc_attr($logo['alt']); ?>">
+
             </a>
           </div>
         </div>
