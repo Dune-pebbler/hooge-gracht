@@ -155,31 +155,40 @@
 
   // Add these new styles for the SVG logo inside the .after-image div.
   .after-image {
-    .after-image-logo {
-      position: absolute; // Positions the SVG on top of the container.
-      top: 50%; // Distance from the top. Adjust as needed.
-      left: 20%; // Distance from the left. Adjust as needed.
-      width: 250px; // Set a specific width for the logo.
-      height: auto; // Maintain the aspect ratio automatically.
-      z-index: 5; // Ensures it's above the background image.
+    .image-container {
+      /* Apply the shadow to the container, not the image */
+      box-shadow: 10px 10px 5px rgba(35, 31, 32, 0.37);
 
-      @media screen and (max-width: 1440px) {
-        top: 40%;
-        left: 25%;
-      }
-      @media screen and (max-width: 1024px) {
-        top: 40%;
-        left: 10%;
-      }
-      @media screen and (max-width: 768px) {
-        top: 40%;
-        left: 10%;
-        width: 200px;
-      }
-      @media screen and (max-width: 576px) {
-        top: 50%;
-        left: 5%;
-        width: 150px;
+      /* Important: The div needs a size.
+         This makes it shrink to the size of the image. */
+      display: inline-block;
+      line-height: 0; /* Removes extra space below the image */
+      .after-image-logo {
+        position: absolute; // Positions the SVG on top of the container.
+        top: 50%; // Distance from the top. Adjust as needed.
+        left: 20%; // Distance from the left. Adjust as needed.
+        width: 250px; // Set a specific width for the logo.
+        height: auto; // Maintain the aspect ratio automatically.
+        z-index: 5; // Ensures it's above the background image.
+
+        @media screen and (max-width: 1440px) {
+          top: 40%;
+          left: 25%;
+        }
+        @media screen and (max-width: 1024px) {
+          top: 40%;
+          left: 10%;
+        }
+        @media screen and (max-width: 768px) {
+          top: 40%;
+          left: 10%;
+          width: 200px;
+        }
+        @media screen and (max-width: 576px) {
+          top: 50%;
+          left: 5%;
+          width: 150px;
+        }
       }
     }
   }

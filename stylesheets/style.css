@@ -977,6 +977,7 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
 .news-archive .news-item-link .news-item .news-content h2 {
   display: flex;
   justify-content: flex-start;
+  text-align: left;
 }
 .news-archive .news-item-link .news-item .news-content-container {
   padding-left: 30px;
@@ -999,6 +1000,7 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   align-items: center;
   gap: 10px;
   transition: background 0.3s ease;
+  font-family: "akhand", sans-serif;
 }
 .news-archive .news-item-link .news-item .news-content .news_button span svg {
   flex-shrink: 0;
@@ -1717,7 +1719,15 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
      object-fit: cover;
   display: block;
 }
-.before-after-slider .after-image .after-image-logo {
+.before-after-slider .after-image .image-container {
+  /* Apply the shadow to the container, not the image */
+  box-shadow: 10px 10px 5px rgba(35, 31, 32, 0.37);
+  /* Important: The div needs a size.
+     This makes it shrink to the size of the image. */
+  display: inline-block;
+  line-height: 0; /* Removes extra space below the image */
+}
+.before-after-slider .after-image .image-container .after-image-logo {
   position: absolute;
   top: 50%;
   left: 20%;
@@ -1726,26 +1736,26 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   z-index: 5;
 }
 @media screen and (max-width: 1440px) {
-  .before-after-slider .after-image .after-image-logo {
+  .before-after-slider .after-image .image-container .after-image-logo {
     top: 40%;
     left: 25%;
   }
 }
 @media screen and (max-width: 1024px) {
-  .before-after-slider .after-image .after-image-logo {
+  .before-after-slider .after-image .image-container .after-image-logo {
     top: 40%;
     left: 10%;
   }
 }
 @media screen and (max-width: 768px) {
-  .before-after-slider .after-image .after-image-logo {
+  .before-after-slider .after-image .image-container .after-image-logo {
     top: 40%;
     left: 10%;
     width: 200px;
   }
 }
 @media screen and (max-width: 576px) {
-  .before-after-slider .after-image .after-image-logo {
+  .before-after-slider .after-image .image-container .after-image-logo {
     top: 50%;
     left: 5%;
     width: 150px;
@@ -2078,7 +2088,17 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   transform: scale(1.05);
 }
 .news .news-item-link .news-item .news-thumb {
+  height: 350px; /* Set fixed height for the container */
   transition: transform 0.3s ease;
+  overflow: hidden; /* Hide parts of the image that overflow */
+  position: relative;
+}
+.news .news-item-link .news-item .news-thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover; /* Make image cover the container */
+  display: block;
 }
 .news .news-item-link .news-item .news-content {
   color: black;
@@ -2109,7 +2129,7 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   align-items: center;
   gap: 10px;
   transition: background 0.3s ease;
-  font-family: "neue-haas-unica", sans-serif;
+  font-family: "akhand", sans-serif;
 }
 .news .news-item-link .news-item .news-content .news_button span svg {
   flex-shrink: 0;

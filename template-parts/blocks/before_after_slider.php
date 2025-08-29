@@ -31,8 +31,10 @@ $sales_text = get_field('sales_text', 'option');
 
                     <div class="after-image">
                         <img src="<?php echo $after_img['url']; ?>" alt="<?php echo $after_img['alt']; ?>">
-                        <img class="after-image-logo" src="<?= get_template_directory_uri(); ?>/images/Titel.svg"
-                            alt="Titel Logo">
+                        <div class="image-container">
+                            <img class="after-image-logo" src="<?= get_template_directory_uri(); ?>/images/titel_V2.svg"
+                                alt="Titel Logo">
+                        </div>
                     </div>
                     <div class="before-image">
                         <img src="<?php echo $before_img['url']; ?>" alt="<?php echo $before_img['alt']; ?>">

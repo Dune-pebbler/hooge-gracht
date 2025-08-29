@@ -53,6 +53,7 @@
         h2 {
           display: flex;
           justify-content: flex-start;
+          text-align: left;
         }
 
         &-container {
@@ -80,6 +81,7 @@
             align-items: center;
             gap: 10px;
             transition: background 0.3s ease;
+            font-family: $font2;
 
             svg {
               flex-shrink: 0;
