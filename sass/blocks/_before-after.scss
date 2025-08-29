@@ -159,21 +159,22 @@
       position: absolute; // Positions the SVG on top of the container.
       top: 50%; // Distance from the top. Adjust as needed.
       left: 20%; // Distance from the left. Adjust as needed.
-      width: 350px; // Set a specific width for the logo.
+      width: 250px; // Set a specific width for the logo.
       height: auto; // Maintain the aspect ratio automatically.
       z-index: 5; // Ensures it's above the background image.
 
       @media screen and (max-width: 1440px) {
-        top: 53%;
+        top: 40%;
         left: 25%;
       }
       @media screen and (max-width: 1024px) {
-        top: 50%;
+        top: 40%;
         left: 10%;
       }
       @media screen and (max-width: 768px) {
         top: 40%;
         left: 10%;
+        width: 200px;
       }
       @media screen and (max-width: 576px) {
         top: 50%;
