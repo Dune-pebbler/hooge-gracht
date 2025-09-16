@@ -2584,9 +2584,10 @@ footer .footer-content-container p {
 footer .footer-content-container a {
   color: #fff;
   text-decoration: none;
+  line-height: 30px;
 }
 footer .footer-content-container img {
-  height: 53px;
+  height: 100px;
   width: auto;
 }
 footer .under-footer-container {
