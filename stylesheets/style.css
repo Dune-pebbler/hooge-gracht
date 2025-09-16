@@ -1878,7 +1878,6 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
 }
 .impression_block .impression-banner {
   position: relative;
-  margin-top: -100px;
 }
 .impression_block .impression-banner:before {
   content: " ";
