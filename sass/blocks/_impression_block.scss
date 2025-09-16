@@ -21,19 +21,46 @@
       height: 123px;
     }
   }
-  &__background-image-container {
-    height: 100%;
-    border-radius: 90px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background-color: white;
-      @media screen and (max-width: 576px) {
-        height: 313px;
-      }
+
+  // NEW: Rule for the white background row
+  .background-image-row {
+    background: $white;
+    padding: 4rem 0; // Add vertical spacing
+
+    @media screen and (max-width: 576px) {
+      padding: 2rem 0;
     }
   }
+
+  &__background-image-container {
+    // REMOVED: height: 100%;
+    border-radius: 90px;
+    overflow: hidden; // ADDED: Ensures image respects the border radius
+
+    img {
+      width: 100%;
+      // MODIFIED: Use auto height to maintain aspect ratio
+      height: auto;
+      display: block; // ADDED: Removes potential extra space below image
+      // ADDED: Controls max height to prevent it being "crazy big"
+      max-height: 700px;
+      object-fit: cover;
+      background-color: white; // This is likely unnecessary now
+
+      @media screen and (max-width: 576px) {
+        // MODIFIED: Use auto height here too
+        height: auto;
+        max-height: 400px; // Set a smaller max-height for mobile
+        border-radius: 45px; // Optional: reduce radius on mobile
+      }
+    }
+
+    // Optional: Adjust container radius on mobile
+    @media screen and (max-width: 576px) {
+      border-radius: 45px;
+    }
+  }
+
   .impression-banner {
     position: relative;
     &:before {

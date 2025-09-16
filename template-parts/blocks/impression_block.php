@@ -7,8 +7,8 @@ $inside_text = get_sub_field('inside_text');
 ?>
 <section class="impression_block" id="situatie">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-10 p-0">
+        <div class="row justify-content-center background-image-row">
+            <div class="col-11 col-md-10 col-lg-8 p-0">
                 <div class="impression_block__background-image-container">
                     <img src="<?= $background_impression['url']; ?>" alt="<?= $background_impression['alt']; ?>">
                 </div>
