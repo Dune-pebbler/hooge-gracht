@@ -6,7 +6,7 @@ $outside_text = get_sub_field('outside_text');
 $inside_text = get_sub_field('inside_text');
 ?>
 <section class="impression_block" id="situatie">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 p-0">
                 <div class="impression_block__background-image-container">

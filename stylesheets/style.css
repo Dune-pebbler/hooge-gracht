@@ -1863,6 +1863,7 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
 }
 .impression_block__background-image-container {
   height: 100%;
+  border-radius: 90px;
 }
 .impression_block__background-image-container img {
   width: 100%;
