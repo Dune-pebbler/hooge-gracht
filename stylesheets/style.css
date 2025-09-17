@@ -1843,6 +1843,7 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
 }
 .impression_block h2 {
   margin-top: 30px;
+  text-transform: uppercase;
 }
 .impression_block::before {
   content: "";
