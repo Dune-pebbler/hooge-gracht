@@ -2,6 +2,9 @@
   background: $color2;
   position: relative;
   overflow: hidden;
+  h2 {
+    margin-top: 30px;
+  }
 
   &::before {
     content: "";
