@@ -4,10 +4,12 @@ $outside_impression = get_sub_field('outside_impression');
 $inside_impression = get_sub_field('inside_impression');
 $outside_text = get_sub_field('outside_text');
 $inside_text = get_sub_field('inside_text');
+$block_title = get_sub_field('block_title');
 ?>
 <section class="impression_block" id="situatie">
     <div class="container-fluid">
         <div class="row justify-content-center background-image-row">
+            <h2><?= $block_title; ?></h2>
             <div class="col-11 col-md-10 col-lg-8 p-0">
                 <div class="impression_block__background-image-container">
                     <img src="<?= $background_impression['url']; ?>" alt="<?= $background_impression['alt']; ?>">
