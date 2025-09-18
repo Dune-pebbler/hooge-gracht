@@ -1762,8 +1762,11 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   }
 }
 .before-after-slider .before-image {
-  clip-path: inset(0 50% 0 0);
+  -webkit-clip-path: inset(0 50% 0 0);
+          clip-path: inset(0 50% 0 0);
+  transition: -webkit-clip-path 0.1s ease-out;
   transition: clip-path 0.1s ease-out;
+  transition: clip-path 0.1s ease-out, -webkit-clip-path 0.1s ease-out;
 }
 .before-after-slider .before-image .image-label {
   right: 20px;
@@ -1939,6 +1942,9 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
     height: 313px;
   }
 }
+.impression_block .impression-banner .impression_block__outside-image-container.single img {
+  border-radius: 90px 90px 0 0;
+}
 .impression_block .impression-banner .impression_block__inside-image-container {
   position: relative;
   z-index: 2;
@@ -1954,6 +1960,9 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   .impression_block .impression-banner .impression_block__inside-image-container img {
     height: 313px;
   }
+}
+.impression_block .impression-banner .impression_block__inside-image-container.single img {
+  border-radius: 90px 90px 0 0;
 }
 
 .timeline {

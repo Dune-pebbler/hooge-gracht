@@ -102,6 +102,12 @@
         }
       }
     }
+    // Single modifier: when only outside impression exists, give both top radii
+    .impression_block__outside-image-container.single {
+      img {
+        border-radius: 90px 90px 0 0;
+      }
+    }
     .impression_block__inside-image-container {
       position: relative;
       z-index: 2;
@@ -114,6 +120,12 @@
         @media screen and (max-width: 576px) {
           height: 313px;
         }
+      }
+    }
+    // Single modifier: when only inside impression exists, give both top radii
+    .impression_block__inside-image-container.single {
+      img {
+        border-radius: 90px 90px 0 0;
       }
     }
   }
