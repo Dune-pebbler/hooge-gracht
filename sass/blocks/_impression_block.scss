@@ -124,6 +124,7 @@
     }
     // Single modifier: when only inside impression exists, give both top radii
     .impression_block__inside-image-container.single {
+      padding: 0px;
       img {
         border-radius: 90px 90px 0 0;
       }

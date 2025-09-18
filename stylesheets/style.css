@@ -1961,6 +1961,9 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
     height: 313px;
   }
 }
+.impression_block .impression-banner .impression_block__inside-image-container.single {
+  padding: 0px;
+}
 .impression_block .impression-banner .impression_block__inside-image-container.single img {
   border-radius: 90px 90px 0 0;
 }
