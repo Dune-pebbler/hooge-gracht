@@ -8,6 +8,8 @@ $block_title = get_sub_field('block_title');
 // Determine availability of impressions
 $has_outside = !empty($outside_impression) && !empty($outside_impression['url']);
 $has_inside = !empty($inside_impression) && !empty($inside_impression['url']);
+// Decide column width on large screens: 8 when single, 4 when both
+$col_lg = ($has_outside xor $has_inside) ? 'col-lg-8' : 'col-lg-4';
 ?>
 <section class="impression_block" id="situatie">
     <div class="container-fluid">
@@ -22,7 +24,7 @@ $has_inside = !empty($inside_impression) && !empty($inside_impression['url']);
         <?php if ($has_outside || $has_inside): ?>
             <div class="row justify-content-center impression-banner">
                 <?php if ($has_outside): ?>
-                    <div class="col-12 col-md-6 col-lg-4 p-0 ">
+                    <div class="col-12 col-md-6 <?= $col_lg; ?> p-0 ">
                         <div
                             class="impression_block__outside-image-container<?= (!$has_inside ? ' single' : ''); ?> slide-left-on-scroll">
                             <img src="<?= $outside_impression['url']; ?>" alt="<?= $outside_impression['alt']; ?>">
@@ -36,7 +38,7 @@ $has_inside = !empty($inside_impression) && !empty($inside_impression['url']);
                 <?php endif; ?>
 
                 <?php if ($has_inside): ?>
-                    <div class="col-12 col-md-6 col-lg-8 p-0 ">
+                    <div class="col-12 col-md-6 <?= $col_lg; ?> p-0 ">
                         <div
                             class="impression_block__inside-image-container<?= (!$has_outside ? ' single' : ''); ?> slide-right-on-scroll">
                             <img src="<?= $inside_impression['url']; ?>" alt="<?= $inside_impression['alt']; ?>">

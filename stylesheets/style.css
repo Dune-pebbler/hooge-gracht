@@ -1962,7 +1962,7 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   }
 }
 .impression_block .impression-banner .impression_block__inside-image-container.single {
-  padding: 0px;
+  padding: 0px !important;
 }
 .impression_block .impression-banner .impression_block__inside-image-container.single img {
   border-radius: 90px 90px 0 0;
