@@ -15,7 +15,10 @@ $text_with_map__map_field = get_sub_field('text_with_map__map_field');
             </div>
             <div class="col-12 col-lg-7 p-0">
                 <div class="text_with_map__image-container">
-                    <img src="<?= $text_with_map__map_field['url']; ?>" alt="<?= $text_with_map__map_field['alt']; ?>">
+                    <a href="https://maps.app.goo.gl/e9TJFCt6qBoeUymF6" target="_blank" rel="noopener noreferrer">
+                        <img src="<?= $text_with_map__map_field['url']; ?>"
+                            alt="<?= $text_with_map__map_field['alt']; ?>">
+                    </a>
                     <div class="image-container-svg">
                         <img src="<?= get_template_directory_uri(); ?>/images/heden-verleden.svg"
                             alt="<?= esc_attr($logo['alt']); ?>">
