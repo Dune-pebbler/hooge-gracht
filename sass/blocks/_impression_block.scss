@@ -102,8 +102,8 @@
         }
       }
     }
-    // Single modifier: when only outside impression exists, give both top radii
-    .impression_block__outside-image-container.single {
+    // Solo modifier: when only outside impression exists, give both top radii
+    .impression_block__outside-image-container.solo {
       img {
         border-radius: 90px 90px 0 0;
       }
@@ -122,8 +122,8 @@
         }
       }
     }
-    // Single modifier: when only inside impression exists, give both top radii
-    .impression_block__inside-image-container.single {
+    // Solo modifier: when only inside impression exists, give both top radii
+    .impression_block__inside-image-container.solo {
       padding: 0px !important;
       img {
         border-radius: 90px 90px 0 0;

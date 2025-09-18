@@ -1942,7 +1942,7 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
     height: 313px;
   }
 }
-.impression_block .impression-banner .impression_block__outside-image-container.single img {
+.impression_block .impression-banner .impression_block__outside-image-container.solo img {
   border-radius: 90px 90px 0 0;
 }
 .impression_block .impression-banner .impression_block__inside-image-container {
@@ -1961,10 +1961,10 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
     height: 313px;
   }
 }
-.impression_block .impression-banner .impression_block__inside-image-container.single {
+.impression_block .impression-banner .impression_block__inside-image-container.solo {
   padding: 0px !important;
 }
-.impression_block .impression-banner .impression_block__inside-image-container.single img {
+.impression_block .impression-banner .impression_block__inside-image-container.solo img {
   border-radius: 90px 90px 0 0;
 }
 

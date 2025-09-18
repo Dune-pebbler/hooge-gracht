@@ -26,7 +26,7 @@ $col_lg = ($has_outside xor $has_inside) ? 'col-lg-8' : 'col-lg-4';
                 <?php if ($has_outside): ?>
                     <div class="col-12 col-md-6 <?= $col_lg; ?> p-0 ">
                         <div
-                            class="impression_block__outside-image-container<?= (!$has_inside ? ' single' : ''); ?> slide-left-on-scroll">
+                            class="impression_block__outside-image-container<?= (!$has_inside ? ' solo' : ''); ?> slide-left-on-scroll">
                             <img src="<?= $outside_impression['url']; ?>" alt="<?= $outside_impression['alt']; ?>">
                         </div>
                         <?php if (!empty($outside_text)): ?>
@@ -40,7 +40,7 @@ $col_lg = ($has_outside xor $has_inside) ? 'col-lg-8' : 'col-lg-4';
                 <?php if ($has_inside): ?>
                     <div class="col-12 col-md-6 <?= $col_lg; ?> p-0 ">
                         <div
-                            class="impression_block__inside-image-container<?= (!$has_outside ? ' single' : ''); ?> slide-right-on-scroll">
+                            class="impression_block__inside-image-container<?= (!$has_outside ? ' solo' : ''); ?> slide-right-on-scroll">
                             <img src="<?= $inside_impression['url']; ?>" alt="<?= $inside_impression['alt']; ?>">
                         </div>
                         <?php if (!empty($inside_text)): ?>
