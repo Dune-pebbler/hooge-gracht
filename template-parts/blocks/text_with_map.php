@@ -19,11 +19,10 @@ $text_with_map__map_field = get_sub_field('text_with_map__map_field');
                         <img src="<?= $text_with_map__map_field['url']; ?>"
                             alt="<?= $text_with_map__map_field['alt']; ?>">
                     </a>
-                    <div class="image-container-svg">
+                    <!-- <div class="image-container-svg">
                         <img src="<?= get_template_directory_uri(); ?>/images/heden-verleden.svg"
                             alt="<?= esc_attr($logo['alt']); ?>">
-                    </div>
-
+                    </div> -->
                 </div>
             </div>
         </div>
