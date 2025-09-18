@@ -36,7 +36,7 @@ $has_inside = !empty($inside_impression) && !empty($inside_impression['url']);
                 <?php endif; ?>
 
                 <?php if ($has_inside): ?>
-                    <div class="col-12 col-md-6 col-lg-4 p-0 ">
+                    <div class="col-12 col-md-6 col-lg-8 p-0 ">
                         <div
                             class="impression_block__inside-image-container<?= (!$has_outside ? ' single' : ''); ?> slide-right-on-scroll">
                             <img src="<?= $inside_impression['url']; ?>" alt="<?= $inside_impression['alt']; ?>">
