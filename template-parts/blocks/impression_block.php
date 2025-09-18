@@ -9,7 +9,7 @@ $block_title = get_sub_field('block_title');
 $has_outside = !empty($outside_impression) && !empty($outside_impression['url']);
 $has_inside = !empty($inside_impression) && !empty($inside_impression['url']);
 // Decide column width on large screens: 8 when single, 4 when both
-$col_lg = ($has_outside xor $has_inside) ? 'col-lg-8' : 'col-lg-4';
+$col_lg = ($has_outside xor $has_inside) ? 'col-lg-4' : 'col-lg-4';
 ?>
 <section class="impression_block" id="situatie">
     <div class="container-fluid">
