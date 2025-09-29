@@ -9,6 +9,7 @@
         <?php while (have_rows('footer_info_repeater', 'option')):
           the_row();
           $title = get_sub_field('company_role');
+          $url = get_sub_field('company_url');
           $logo = get_sub_field('company_logo'); // image field
           $adres = get_sub_field('company_adres');
           $email = get_sub_field('company_email');
@@ -22,11 +23,16 @@
               <?php endif; ?>
 
               <?php if ($logo): ?>
-                <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt'] ?? $title; ?>">
+                <a href="<?php echo $url; ?>" target="_blank"><img src="<?php echo $logo['url']; ?>"
+                    alt="<?php echo $logo['alt'] ?? $title; ?>"></a>
               <?php endif; ?>
 
               <?php if ($adres): ?>
                 <p><?php echo $adres; ?></p>
+              <?php endif; ?>
+
+              <?php if ($zip): ?>
+                <p><?php echo $zip; ?></p>
               <?php endif; ?>
 
               <?php if ($email): ?>
