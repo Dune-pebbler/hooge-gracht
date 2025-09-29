@@ -60,4 +60,13 @@
   .gform_validation_errors {
     display: none;
   }
+  .gform-field-label {
+    a {
+      color: $color3;
+
+      &:hover {
+        color: $color2;
+      }
+    }
+  }
 }

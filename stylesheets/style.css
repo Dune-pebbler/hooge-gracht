@@ -719,6 +719,12 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
 .interest_form .gform_validation_errors {
   display: none;
 }
+.interest_form .gform-field-label a {
+  color: #d9d2bf;
+}
+.interest_form .gform-field-label a:hover {
+  color: #35231c;
+}
 
 .text_image {
   display: flex;
