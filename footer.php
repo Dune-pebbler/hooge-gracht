@@ -50,6 +50,7 @@
     <div class="row justify-content-center align-items-center">
       <div class="col-12">
         <div class="under-footer-container">
+          <span id="copyright">&copy; <?php echo date('Y'); ?></span> -
           <a href="/privacybeleid">Privacy statement</a> -
           <a target="_blank" href="https://dunepebbler.nl/">website door:
             <svg id="Group_116" data-name="Group 116" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 45.994"
@@ -78,11 +79,6 @@
   </div>
 </footer>
 
-<script>
-  const currentYear = new Date().getFullYear();
-  document.getElementById("copyright").innerHTML =
-    `&copy; ${currentYear}`;
-</script>
 <?php wp_footer(); ?>
 </body>
 
