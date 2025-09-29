@@ -23,8 +23,7 @@
               <?php endif; ?>
 
               <?php if ($logo): ?>
-                <a href="<?php echo $url; ?>" target="_blank"><img src="<?php echo $logo['url']; ?>"
-                    alt="<?php echo $logo['alt'] ?? $title; ?>"></a>
+                <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt'] ?? $title; ?>">
               <?php endif; ?>
 
               <?php if ($adres): ?>
