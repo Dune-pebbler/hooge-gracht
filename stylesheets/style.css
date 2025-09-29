@@ -720,10 +720,11 @@ p + .btn, p + .btn-secondary, p + .btn-outline {
   display: none;
 }
 .interest_form .gform-field-label a {
-  color: #d9d2bf;
+  color: #35231c;
+  transition: color 0.3s ease;
 }
 .interest_form .gform-field-label a:hover {
-  color: #35231c;
+  color: #d9d2bf;
 }
 
 .text_image {

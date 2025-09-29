@@ -62,10 +62,11 @@
   }
   .gform-field-label {
     a {
-      color: $color3;
+      color: $color2;
+      transition: color 0.3s ease;
 
       &:hover {
-        color: $color2;
+        color: $color3;
       }
     }
   }
