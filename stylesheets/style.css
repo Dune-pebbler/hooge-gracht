@@ -2641,6 +2641,11 @@ footer .under-footer-container a {
   font-family: "akhand", sans-serif;
   text-transform: uppercase;
 }
+footer .under-footer-container #copyright {
+  color: #fff;
+  font-family: "akhand", sans-serif;
+  text-transform: uppercase;
+}
 
 section.error-404 {
   padding: 5em 0;
