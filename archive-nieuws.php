@@ -26,28 +26,7 @@
                                     <h2><?php the_title(); ?></h2>
                                     <div class="news-content-container">
                                         <span class="news-date"><?php echo get_the_date('d/m/Y'); ?></span>
-                                        <div class="news-excerpt">
-                                            <?php
-                                            // 1. Define your desired character limit
-                                            $limit = 250;
-
-                                            // 2. Get the raw excerpt text
-                                            $excerpt = get_the_excerpt();
-
-                                            // 3. Check if the text is longer than the limit
-                                            if (strlen($excerpt) > $limit) {
-                                                // Cut the string to the limit
-                                                $excerpt = substr($excerpt, 0, $limit);
-                                                // Ensure it doesn't end in the middle of a word
-                                                $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
-                                                // Add an ellipsis
-                                                echo $excerpt . '...';
-                                            } else {
-                                                // If it's shorter, display it as is
-                                                echo $excerpt;
-                                            }
-                                            ?>
-                                        </div>
+                                        <div class="news-excerpt"><?php the_excerpt(); ?></div>
                                     </div>
                                     <div class="news_button">
                                         <span><?= $button_link['title']; ?>
