@@ -52,6 +52,7 @@
         <div class="under-footer-container">
           <span id="copyright">&copy; <?php echo date('Y'); ?></span> -
           <a href="/privacybeleid">Privacy statement</a> -
+          <a href="/disclaimer">Disclaimer</a> -
           <a target="_blank" href="https://dunepebbler.nl/">website door:
             <svg id="Group_116" data-name="Group 116" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 45.994"
               style="width: 40px; height: 40px; vertical-align: middle; margin-left: 5px;">
