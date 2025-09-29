@@ -2604,6 +2604,11 @@ footer .footer-content-container {
   align-items: start;
   padding: 10px 0px;
 }
+@media screen and (max-width: 576px) {
+  footer .footer-content-container {
+    align-items: center;
+  }
+}
 footer .footer-content-container h2 {
   color: #fff;
   font-size: 40px;

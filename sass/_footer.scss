@@ -9,6 +9,10 @@ footer {
     align-items: start;
     padding: 10px 0px;
 
+    @media screen and (max-width: 576px) {
+      align-items: center;
+    }
+
     h2 {
       color: $white;
       font-size: 40px;
